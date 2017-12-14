@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-	#Get /welcome/say_hello
+	#Get /welcome/say
 	def say
 		#views/welcome/say.html.erb
 	end

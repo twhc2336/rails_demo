@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	before_action :set_event, :only => [:show,:edit,:update,:destroy]
+	before_action :get_event, :only => [:show,:edit,:update,:destroy]
 	
 	#GET /events/index
 	#GET /events
@@ -77,7 +77,7 @@ class EventsController < ApplicationController
 		params.require(:event).permit(:name,:description)
 	end
 
-	def set_event
+	def get_event
 		@event = Event.find(params[:id])
 	end
 

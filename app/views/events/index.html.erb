@@ -1,16 +1,19 @@
 <h1>Events list</h1>
-<ul>
+<table class="table">
 	<% @events.each	do |e|%>
-		<li>
-			<%= link_to e.name	, event_path(e) %>
-			<%= link_to '(XML)', event_path(e,:format => :xml) %>
-			<%= link_to '(JSON)', event_path(e,:format => :json) %>
-			<%= link_to 'Edit', edit_event_path(e) %>
-			<%= link_to 'Delete', event_path(e), :method => :delete , :data => { :confirm => "Are you sure?"} %>
-
-		</li>
+		<tr>
+			<td><%= link_to e.name	, event_path(e), :class  => "btn btn-primary" %></td>
+			<td>
+			<%= link_to '(XML)', event_path(e,:format => :xml) , :class  => "btn btn-default" %>
+			<%= link_to '(JSON)', event_path(e,:format => :json), :class  => "btn btn-default" %>
+			<%= link_to 'Edit', edit_event_path(e), :class  => "btn btn-default" %>
+			<%= link_to 'Delete', event_path(e), :method => :delete , :data => { :confirm => "Are you sure?"}, :class  => "btn btn-danger" %>
+			</td>
+		</tr>
 	<% end %> 	
-</ul>
-<%= link_to 'New Event', new_event_path %>
-<p><%= link_to 'Aton feed', events_path(:format => :atom) %></p>
-<%= paginate @events %>
+</table>
+<%= link_to 'New Event', new_event_path, :class  => "btn btn-primary" %>
+<%= link_to 'Aton feed', events_path(:format => :atom), :class  => "btn btn-default" %>
+<div>
+	<%= paginate @events %>
+</div>

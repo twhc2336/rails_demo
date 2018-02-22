@@ -1,6 +1,12 @@
 <!--
 <%= debug(@event) %>
 -->
-<%= @event.name %>
-<%= simple_format(@event.description) %>
+<div class="form-group">
+	<label>Name</label>
+	<div><%= @event.name %></div>
+</div>
+<div class="form-group">
+<label>Description</label>
+<div><%= simple_format(@event.description) %></div>
+</div>
 <p><%= link_to 'Back to index', events_path %></p>

@@ -1,5 +1,6 @@
-<%= form_for @event, :url => events_path do |f| %>
+<%= form_for @event, :url => events_path, :class => "form" do |f| %>
 	<%= render :partial => 'form', :locals => {:f => f} %>
 
-    <%= f.submit "Create" %>
+    <%= f.submit "Create", :class => "btn btn-primary" %>
+    <div><%= link_to 'Back to index', events_path, :class => "btn btn-default" %></div>
 <% end%>

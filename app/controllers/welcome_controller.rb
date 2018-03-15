@@ -4,4 +4,9 @@ class WelcomeController < ApplicationController
 	def say
 		#views/welcome/say.html.erb
 	end
+
+	#GET /welcome/show
+	def show
+
+	end
 end

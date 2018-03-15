@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 	#GET /events
 	def index
 		#@events = Event.all
+		#params是一個hash key:value#
 		@events = Event.page(params[:page]).per(5)
 
 		respond_to do |format|

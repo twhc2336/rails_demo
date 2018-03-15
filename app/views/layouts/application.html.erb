@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @page_title || "Event application"%></title>
+    <!--<title><%#= @page_title || "Event application"%></title>-->
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <!--<link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet">-->
   </head>
-
   <body>
+    <%= render partial: 'layouts/nav'%>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -26,5 +29,6 @@
         </div>
       </div>
     </div>
+    <%= render partial: 'layouts/footer'%>
   </body>
 </html>

@@ -1,13 +1,20 @@
-<h1>Events list</h1>
+
+<%#= render partial: 'events/title'%>
+<%= render partial: 'events/images'%>
+<%#= render partial: 'events/contact_us'%>
+<h3>Events list</h3>
 <table class="table">
 	<% @events.each	do |e|%>
 		<tr>
-			<td><%= link_to e.name	, event_path(e), :class  => "btn btn-primary" %></td>
 			<td>
-			<%= link_to '(XML)', event_path(e,:format => :xml) , :class  => "btn btn-default" %>
-			<%= link_to '(JSON)', event_path(e,:format => :json), :class  => "btn btn-default" %>
-			<%= link_to 'Edit', edit_event_path(e), :class  => "btn btn-default" %>
-			<%= link_to 'Delete', event_path(e), :method => :delete , :data => { :confirm => "Are you sure?"}, :class  => "btn btn-danger" %>
+				<%= link_to e.name	, event_path(e), :class  => "btn btn-primary" %>
+			</td>
+			<td>
+				<%= link_to '(XML)', event_path(e,:format => :xml) , :class  => "btn btn-default" %>
+				<%= link_to '(JSON)', event_path(e,:format => :json), :class  => "btn btn-default" %>
+				<%= link_to 'Edit', edit_event_path(e), :class  => "btn btn-default" %>
+				<%= link_to 'Delete', event_path(e), :method => :delete , :data => { :confirm => "Are you sure?"}, :class  => "btn btn-danger" %>
+				<%= link_to '<div class="btn btn-info">welcome#show</div>'.html_safe, controller: :welcome, action: :show, id: 123 %>
 			</td>
 		</tr>
 	<% end %> 	

@@ -7,6 +7,6 @@ class WelcomeController < ApplicationController
 
 	#GET /welcome/show
 	def show
-
+		@id = params[:id]
 	end
 end

@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+(1..50).each do |t|
+	product = {
+		name: "clock#{t}",
+		description: "clock#{t} desc",
+		price: 100,
+		image_url: "https://images.pexels.com/photos/280402/pexels-photo-280402.jpeg?h=350&auto=compress&cs=tinysrgb"
+
+	}
+
+	Product.create(product)
+end

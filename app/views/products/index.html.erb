@@ -1,0 +1,78 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<ul class="list-group">
+				<li class="list-group-item"> 
+					class1
+					<ul class="list-group">
+						<li class="list-group-item">sub-class</li>
+						<li class="list-group-item">sub-class</li>
+						<li class="list-group-item">sub-class</li>
+						<li class="list-group-item">sub-class</li>
+					</ul>
+				</li>
+				<li class="list-group-item">
+					class2
+					<ul class="list-group">
+						<li class="list-group-item">sub-class</li>
+						<li class="list-group-item">sub-class</li>
+						<li class="list-group-item">sub-class</li>
+						<li class="list-group-item">sub-class</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-9">
+			<div class="">
+				<div class="jumbotron">
+				  <h1><%= @ad[:title] %></h1>
+				  <%#= render partial: "home/images" %>
+				  <p><%= @ad[:description] %></p>
+				  <p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %></a></p>
+				</div>				
+			</div>
+			<div class="row">
+				<% @products.each_with_index do |product,index| %>
+					<div class="col-xs-3">
+						<div class="thumbnail">
+						  <%#= image_tag product[:image_url], alt: product.name %>
+						  <%= link_to image_path(product.image_url) do %>
+						   <!--<img src= "<%= product[:image_url] %>", alt= <%= product.name %>>-->
+						   <%= image_tag product.image_url, alt: product.name %>
+						  <% end %>
+						  <div class="caption">
+						    <h3><%= product.name %></h3>
+						    <p><%= product.description %></p>
+						    <p><a href="#" class="btn btn-primary" role="button">Button</a></p> 
+						    <p><a href="#" class="btn btn-default" role="button">Button</a></p>
+						  </div>
+						</div>	
+					</div>
+				<% end %>
+			</div>
+			<div class="row">
+				<nav aria-label="Page navigation">
+				  <ul class="pagination">
+				  	<% if @page != @first_page %>
+					    <li>
+					      	<%= link_to root_path(page: @page - 1) do %>
+					        	<span aria-hidden="true">&laquo;</span>
+					      	<% end %>   
+					    </li>
+				    <% end %>
+				    <% (@first_page..@last_page).each do |page_number| %>
+				    	<li><%= link_to page_number, root_path(page: page_number) %></li>
+				    <% end %>
+				    <% if @page != @last_page %>
+					    <li>
+					    	<%= link_to root_path(page: ((@page == @last_page )? @last_page : @page + 1)) do %>
+					        	<span aria-hidden="true">&raquo;</span>
+					        <% end %>
+					    </li>
+					<% end %>    
+				  </ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>

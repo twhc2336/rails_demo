@@ -1,0 +1,27 @@
+<h3>create product</h3>
+<%= form_tag("/products", method: "post") do %>
+	<label>
+		name
+		<input type="text" name="name" />
+	</label>
+	<br/>
+	<label>
+		description
+		<input type="text" name="description" />
+	</label>
+	<br/>
+	<label>
+		image url
+		<input type="text" name="image_url" />
+	</label>
+	<br/>
+	<label>
+		price
+		<input type="number" name="price" />
+	</label>
+	<br/>
+	<button type="submit">
+		create
+	</button>
+	<%= @note %>
+<% end %>

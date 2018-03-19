@@ -1,5 +1,6 @@
 <h3>create product</h3>
-<%= form_tag("/products", method: "post") do %>
+<%#= form_tag("/products", method: "post") do %>
+<form action="/products" accept-charset="UTF-8" method="post">
 	<label>
 		name
 		<input type="text" name="name" />
@@ -23,4 +24,5 @@
 	<button type="submit">
 		create
 	</button>
-<% end %>
+</form>
+<%# end %>

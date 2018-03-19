@@ -1,4 +1,9 @@
 class ProductsController < ApplicationController
+	skip_before_action :verify_authenticity_token
+	#before_action :get_user
+	#after_action :get_user,only: [:index]
+	#skip_after_action :get_user,except: [:new]
+
 	LIMIT_PRODUCTS_NUMBER = 12
 	#PRODUCTS_COUNT = Product.count
 	def index
@@ -48,6 +53,10 @@ class ProductsController < ApplicationController
 	end
 
 	private
+	def get_user
+		flash[:notice] = "no user!"
+	end
+
 	def product_permit
 		params.permit([:name,:description,:image_url,:price])
 	end

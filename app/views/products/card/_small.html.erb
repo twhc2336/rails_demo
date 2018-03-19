@@ -1,0 +1,18 @@
+<div class="thumbnail">
+  <%#= image_tag product[:image_url], alt: product.name %>
+  <%#= link_to image_path(product.image_url) do %>
+   <!--<img src= "<%#= product.image_url %>", alt= <%#= product.name %>>-->
+   <%#= image_tag product.image_url, alt: product.name %>
+  <%# end %>
+  <%= image_tag product.image_url, alt: product.name %>
+  <div class="caption">
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <div>
+    	<%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary" %>
+    </div> 
+    <div>
+    	<a href="#" class="btn btn-default" role="button">Button</a>
+    </div>
+  </div>
+</div>

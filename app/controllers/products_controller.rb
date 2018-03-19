@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-	skip_before_action :verify_authenticity_token
+	#skip_before_action :verify_authenticity_token
 	#before_action :get_user
 	#after_action :get_user,only: [:index]
 	#skip_after_action :get_user,except: [:new]

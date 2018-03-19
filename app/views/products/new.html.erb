@@ -1,27 +1,26 @@
 <script>
-	$(function(){
-		var token = $('meta[name="csrf-token"]').attr('content');
-		var form_token = $('input[name="authenticity_token"]');
-		form_token.val(token);
-		//console.log(form_token.val());
-		$.ajax({
-			method: "POST",
-			url: "/products",
-			data: {
-				name: "Michael",
-				description: "Taiwan, Hsinchu",
-				image_url: "index-owl.jpg",
-				price: 599,
-				authenticity_token: token
-			}
-		})
-	})
+	//$(function(){
+	//	var token = $('meta[name="csrf-token"]').attr('content');
+	//	var form_token = $('input[name="authenticity_token"]');
+	//	form_token.val(token);
+	//	//console.log(form_token.val());
+	//	$.ajax({
+	//		method: "POST",
+	//		url: "/products",
+	//		data: {
+	//			name: "Michael",
+	//			description: "Taiwan, Hsinchu",
+	//			image_url: "index-owl.jpg",
+	//			price: 599,
+	//			authenticity_token: token
+	//		}
+	//	})
+	//})
 </script>
 
 <h3>create product</h3>
+<%= form_tag "/products", method: :post do %>
 <%#= form_tag("/products", method: "post") do %>
-<form action="/products" accept-charset="UTF-8" method="post">
-	<input type="hidden" name="authenticity_token" value="token_value">
 	<div class="form-group">
 		<label>name</label>
 		<input type="text" name="name" class="form-control" />		
@@ -42,5 +41,5 @@
 			create
 		</button>		
 	</div>
-</form>
-<%# end %>
+<% end %>
+<br/>

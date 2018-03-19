@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 	#before_action :get_user
 	#after_action :get_user,only: [:index]
 	#skip_after_action :get_user,except: [:new]
-
+	before_action :get_product, only: [:show,:edit,:update,:destroy]
 	LIMIT_PRODUCTS_NUMBER = 12
 	#PRODUCTS_COUNT = Product.count
 	def index
@@ -44,9 +44,14 @@ class ProductsController < ApplicationController
 	end
 
 	def edit
+		#@product = Product.find(params[:id])
 	end
 
 	def update
+		#product = Product.find(params[:id])
+		@product.update(product_permit)
+
+		redirect_to action: :index
 	end
 
 	def destroy
@@ -60,4 +65,9 @@ class ProductsController < ApplicationController
 	def product_permit
 		params.permit([:name,:description,:image_url,:price])
 	end
+
+	def get_product
+		@product = Product.find(params[:id])
+	end
+
 end

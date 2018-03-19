@@ -37,7 +37,7 @@
 						<div class="thumbnail">
 						  <%#= image_tag product[:image_url], alt: product.name %>
 						  <%= link_to image_path(product.image_url) do %>
-						   <!--<img src= "<%= product[:image_url] %>", alt= <%= product.name %>>-->
+						   <!--<img src= "<%#= product.image_url %>", alt= <%#= product.name %>>-->
 						   <%= image_tag product.image_url, alt: product.name %>
 						  <% end %>
 						  <div class="caption">

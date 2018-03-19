@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		@note = flash[:note]
+		#@note = flash[:notice]
 	end
 
 	def create
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
 		#	price: params[:price],
 		#	})
 		product = Product.create(product_permit)
-		flash[:note] = product.id 
+		flash[:notice] = product.id 
 		redirect_to action: :new
 	end
 

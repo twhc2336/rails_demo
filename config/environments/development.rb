@@ -37,6 +37,9 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+  #如果沒有找到圖檔則不顯示即可 不用報錯
+  config.assets.unknown_asset_fallback = true
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

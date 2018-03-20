@@ -26,15 +26,17 @@
 			<div class="">
 				<div class="jumbotron">
 				  <h1><%= @ad[:title] %></h1>
-				  <%#= render partial: "home/images" %>
+				  <%#= render partial: "products/images" %>
 				  <p><%= @ad[:description] %></p>
-				  <p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %></a></p>
+				  <!--<p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %></a></p>-->
+				  <%= link_to @ad[:action_title], products_path, class: "btn btn-primary btn-lg" %>
 				</div>				
 			</div>
 			<div class="row">
 				<% @products.each_with_index do |product,index| %>
 					<div class="col-xs-3">
 						<%#= render partial: "products/card/small", locals: {product: product} %>
+						<%#= render 'products/card/small', product: product, page: @page %>
 						<%= render 'products/card/small', product: product %>
 					</div>
 				<% end %>
@@ -44,17 +46,17 @@
 				  <ul class="pagination">
 				  	<% if @page != @first_page %>
 					    <li>
-					      	<%= link_to root_path(page: @page - 1) do %>
+					      	<%= link_to products_path(page: @page - 1) do %>
 					        	<span aria-hidden="true">&laquo;</span>
 					      	<% end %>   
 					    </li>
 				    <% end %>
 				    <% (@first_page..@last_page).each do |page_number| %>
-				    	<li><%= link_to page_number, root_path(page: page_number) %></li>
+				    	<li><%= link_to page_number, products_path(page: page_number) %></li>
 				    <% end %>
 				    <% if @page != @last_page %>
 					    <li>
-					    	<%= link_to root_path(page: ((@page == @last_page )? @last_page : @page + 1)) do %>
+					    	<%= link_to products_path(page: @page + 1) do %>
 					        	<span aria-hidden="true">&raquo;</span>
 					        <% end %>
 					    </li>

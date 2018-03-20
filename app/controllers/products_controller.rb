@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
 
 	def new
 		#@note = flash[:notice]
+		@product = Product.new
 	end
 
 	def create
@@ -41,17 +42,18 @@ class ProductsController < ApplicationController
 	end
 
 	def show
+		@page = params[:page]
 	end
 
 	def edit
 		#@product = Product.find(params[:id])
+		@page = params[:page]
 	end
 
 	def update
 		#product = Product.find(params[:id])
 		@product.update(product_permit)
-
-		redirect_to action: :index
+		redirect_to action: :edit
 	end
 
 	def destroy
@@ -63,11 +65,16 @@ class ProductsController < ApplicationController
 	end
 
 	def product_permit
-		params.permit([:name,:description,:image_url,:price])
+		#params.permit([:name,:description,:image_url,:price])
+		params.require(:product).permit([:name,:description,:image_url,:price])
 	end
 
 	def get_product
 		@product = Product.find(params[:id])
+	end
+
+	def show_params
+		flash[:notice] = params.to_s
 	end
 
 end

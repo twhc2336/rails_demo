@@ -14,7 +14,6 @@
 				<label>價錢</label>
 				<p><%= @product.price %></p>
 			</div>
-
 		</div>
 		<div class="col-sm-8">
 			<div class="form-group">
@@ -22,7 +21,22 @@
 			</div>
 		</div>
 	</div>
+	<%#= link_to 'Edit', edit_product_path(@product,page: @page), class: "btn btn-primary" %>
 	<%= link_to 'Back', products_path, class: "btn btn-primary" %>
+
+	<div style="display:none">
+		<%= check_box_tag(:pet_dog) %>
+		<%= label_tag(:pet_dog, "I own a dog") %>
+		<%= check_box_tag(:pet_cat) %>
+		<%= label_tag(:pet_cat, "I own a cat") %>
+		<br/>
+		<%= radio_button_tag(:age, "child") %>
+		<%= label_tag(:age_child, "I am younger than 21") %>
+		<%= radio_button_tag(:age, "adult") %>
+		<%= label_tag(:age_adult, "I'm over 21") %>	
+	</div>
 </div>
 <% end %>
+
+
 <br/>

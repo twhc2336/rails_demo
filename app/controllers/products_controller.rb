@@ -42,11 +42,19 @@ class ProductsController < ApplicationController
 	end
 
 	def show
+		if @product.blank?
+			redirect_to products_path
+			return
+		end
 		@page = params[:page]
 	end
 
 	def edit
 		#@product = Product.find(params[:id])
+		if @product.blank?
+			redirect_to products_path
+			return
+		end
 		@page = params[:page]
 	end
 
@@ -72,7 +80,7 @@ class ProductsController < ApplicationController
 	end
 
 	def get_product
-		@product = Product.find(params[:id])
+		@product = Product.find_by_id(params[:id])
 	end
 
 	def show_params

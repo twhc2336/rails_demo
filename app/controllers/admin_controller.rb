@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
 	def log_in
+
 		session[:notice]
 	end
 
@@ -20,6 +21,10 @@ class AdminController < ApplicationController
 	
 	private
 	def get_admin
-		@user = User.find_by(email: params[:email], password: params[:password])
+		@user = User.find_by(email: params[:email], password: encrypted(params[:password]))
+	end
+
+	def encrypted(str)
+		"abc" + str
 	end
 end

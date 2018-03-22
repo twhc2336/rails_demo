@@ -4,19 +4,22 @@ class AdminController < ApplicationController
 	end
 
 	def create_session
-		session[:notice] = nil
+		session[:current_user_id] = nil
 		user = get_admin
 		if user.present?
 			flash[:notice] = "Hello, #{user.name}"
 			session[:current_user_id] = user.id
+			redirect_to products_path
+			return
 		end
+		flash[:notice] = "登入失敗！"
 		redirect_to action: :log_in
 	end
 
 	def log_out
-		session[:notice] = nil
 		session[:current_user_id] = nil
-		#redirect_to root_path
+		flash[:notice] = "Log out successfully."
+		redirect_to products_path
 	end
 
 	private

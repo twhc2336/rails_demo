@@ -1,0 +1,13 @@
+<h1>管理員登入</h1>
+<%= session[:notice] %>
+<%= form_tag admin_create_session_path, method: :post do %>
+	<div class="form-group">
+		<%= label_tag :eamil, "Email" %>
+		<%= text_field_tag :email, nil, class: "form-control" %>		
+	</div>
+	<div class="form-group">
+		<%= label_tag :password, "Password" %>
+		<%= password_field_tag :password, nil , class: "form-control" %>		
+	</div>
+	<%= submit_tag "登入", class: "btn btn-primary" %>
+<% end %>

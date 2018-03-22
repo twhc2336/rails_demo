@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-xs-3">
 			<ul class="list-group">
-				<li class="list-group-item"> 
+				<li class="list-group-item">
 					class1
 					<ul class="list-group">
 						<li class="list-group-item">sub-class</li>
@@ -30,7 +30,7 @@
 				  <p><%= @ad[:description] %></p>
 				  <!--<p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %></a></p>-->
 				  <%= link_to @ad[:action_title], products_path, class: "btn btn-primary btn-lg" %>
-				</div>				
+				</div>
 			</div>
 			<div class="row">
 				<% @products.each_with_index do |product,index| %>
@@ -48,7 +48,7 @@
 					    <li>
 					      	<%= link_to products_path(page: @page - 1) do %>
 					        	<span aria-hidden="true">&laquo;</span>
-					      	<% end %>   
+					      	<% end %>
 					    </li>
 				    <% end %>
 				    <% (@first_page..@last_page).each do |page_number| %>
@@ -60,7 +60,7 @@
 					        	<span aria-hidden="true">&raquo;</span>
 					        <% end %>
 					    </li>
-					<% end %>    
+					<% end %>
 				  </ul>
 				</nav>
 			</div>

@@ -50,7 +50,6 @@ class ProductsController < ApplicationController
 			redirect_to products_path
 			return
 		end
-		@page = params[:page]
 	end
 
 	def edit
@@ -59,7 +58,6 @@ class ProductsController < ApplicationController
 			redirect_to products_path
 			return
 		end
-		@page = params[:page]
 	end
 
 	def update
@@ -80,7 +78,7 @@ class ProductsController < ApplicationController
 
 	def product_permit
 		#params.permit([:name,:description,:image_url,:price])
-		params.require(:product).permit([:name,:description,:image_url,:price])
+		params.require(:product).permit([:name,:description,:image_url,:price,:subcategory_id])
 	end
 
 	def get_product

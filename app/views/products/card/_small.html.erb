@@ -8,15 +8,15 @@
   <div class="caption">
     <h3><%= product.name %></h3>
     <p><%= product.description %></p>
-    <p>類別：<%= "#{product.subcategory.try(:category).try(:name)}/#{product.subcategory.try(:name)}" %></p>
+    <p>類別：<%= "#{product.subcategory.try(:name_wtih_category)}" %></p>
     <% if get_current_user %>
     <div>
     	<%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary" %>
-    	<%#= link_to 'Show', product_path(product), class: "btn btn-primary" %>
+      <%#= link_to 'Edit', edit_product_path(product,page: page), class: "btn btn-primary" %>
+    	<%#= link_to 'Show', product_path(product,page: page), class: "btn btn-primary" %>
     	<%= link_to 'Delete', product_path(product), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
     </div>
     <% end %>
   </div>
 </div>
-<%#= page %>
-<%#= params.to_s %>
+<%#= params %>

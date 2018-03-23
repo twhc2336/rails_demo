@@ -27,11 +27,11 @@
 				</div>
 			</div>
 			<div class="row">
-				<% @products.each_with_index do |product,index| %>
+				<% @products.each_with_index do |p,index| %>
 					<div class="col-xs-3">
 						<%#= render partial: "products/card/small", locals: {product: product} %>
 						<%#= render 'products/card/small', product: product, page: @page %>
-						<%= render 'products/card/small', product: product %>
+						<%= render 'products/card/small', product: p %>
 					</div>
 				<% end %>
 			</div>

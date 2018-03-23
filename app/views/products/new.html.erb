@@ -17,7 +17,7 @@
 	//	})
 	//})
 </script>
-<h3>create product</h3>
+<h3>新增產品</h3>
 <%= form_for @product, method: :post do |p| %>
 	<div class="form-group">
 	<%= p.label :name, "名稱" %>
@@ -35,7 +35,11 @@
 	<%= p.label :price, "價格" %>
 	<%= p.number_field :price, class: "form-control" %>
 	</div>
+	<div class="form-group">
+	<%= p.label :subcategory_id, "副類別" %>
+	<%= p.select("subcategory_id", Subcategory.all.collect{ |s| [s.name_wtih_category, s.id]}, {include_blank: '請選擇'}) %>
+	</div>
 	<%= p.submit "新增", class: "btn btn-primary" %>
-	<%= link_to 'Back', products_path, class: "btn btn-default" %>
+	<%#= link_to 'Back', products_path, class: "btn btn-default" %>
 <% end %>
 <br/>

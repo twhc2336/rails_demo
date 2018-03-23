@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
 	LIMIT_PRODUCTS_NUMBER = 12
 	#PRODUCTS_COUNT = Product.count
 	def index
+		@categories = Category.all
+
 		@ad = {
 			title: "大型廣告",
 			description: "廣告描述",

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323064838) do
+ActiveRecord::Schema.define(version: 20180323090249) do
 
   create_table "attendees", force: :cascade do |t|
     t.string "name"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20180323064838) do
     t.string "description"
     t.string "image_url"
     t.integer "price"
+    t.integer "subcategory_id"
+    t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
 
   create_table "subcategories", force: :cascade do |t|

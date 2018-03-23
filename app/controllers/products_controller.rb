@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
 	#before_action :get_user
 	#after_action :get_user,only: [:index]
 	#skip_after_action :get_user,except: [:new]
+	before_action :redirect_to_root_if_not_log_in, except: [:show, :index]
 	before_action :get_product, only: [:show,:edit,:update,:destroy]
+
 	LIMIT_PRODUCTS_NUMBER = 12
 	#PRODUCTS_COUNT = Product.count
 	def index
@@ -37,7 +39,7 @@ class ProductsController < ApplicationController
 		#	price: params[:price],
 		#	})
 		product = Product.create(product_permit)
-		flash[:notice] = product.id 
+		flash[:notice] = product.id
 		redirect_to action: :new
 	end
 
@@ -85,6 +87,14 @@ class ProductsController < ApplicationController
 
 	def show_params
 		flash[:notice] = params.to_s
+	end
+
+	def redirect_to_root_if_not_log_in
+		if !get_current_user
+			#flash[:notice] = "您尚未登入"
+			redirect_to products_path
+			return
+		end
 	end
 
 end

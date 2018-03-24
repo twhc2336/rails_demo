@@ -3,10 +3,6 @@ class Subcategory < ApplicationRecord
   has_many :products
 
   def name_wtih_category
-    if category
-      return "#{category.name}/#{name}"
-    else
-      return name
-    end
+  	return "#{category.try(:name)}/#{try(:name)}"
   end
 end

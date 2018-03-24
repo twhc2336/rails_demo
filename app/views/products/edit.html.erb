@@ -9,8 +9,8 @@
 	<%= p.text_field :description,class: "form-control" %>
 </div>
 <div class="form-group">
-	<%= p.label :image_url,"圖片位置" %>
-	<%= p.text_field :image_url,class: "form-control" %>
+	<%= p.label :image,"圖片位置" %>
+	<%= p.file_field :image %>
 </div>
 <div class="form-group">
 	<%= p.label :price,"價格" %>
@@ -18,7 +18,7 @@
 </div>
 <div class="form-group">
 	<%= p.label :subcategory_id, "副類別" %>
-	<%= p.select("subcategory_id", Subcategory.all.collect{ |s| [s.name_wtih_category, s.id]}, {include_blank: '請選擇'}) %>
+	<%= p.select("subcategory_id", Subcategory.all.order(:category_id).collect{ |s| [s.name_wtih_category, s.id]}, {include_blank: '請選擇'}) %>
 </div>
 	<%= p.submit "更新",class: "btn btn-primary" %>
 	<%#= link_to 'Back', products_path(page: params[:page]), class: "btn btn-default" %>

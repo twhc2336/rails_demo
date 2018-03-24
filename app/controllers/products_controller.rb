@@ -40,8 +40,12 @@ class ProductsController < ApplicationController
 		#	image_url: params[:image_url],
 		#	price: params[:price],
 		#	})
-		product = Product.create(product_permit)
-		flash[:notice] = product.id
+		image = params[:product][:image]
+		if image
+			image_url = save_file(image)
+		end
+		product = Product.create(product_permit.merge({image_url: image_url}))	
+		flash[:notice] = "建立成功"
 		redirect_to action: :new
 	end
 
@@ -61,8 +65,14 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-		#product = Product.find(params[:id])
-		@product.update(product_permit)
+		image = params[:product][:image]
+		if image
+			image_url = save_file(image)
+			@product.update(product_permit.merge({image_url: image_url}))
+		else
+			@product.update(product_permit)		
+		end
+		flash[:notice] = "更新成功"
 		redirect_to action: :edit
 	end
 
@@ -72,13 +82,14 @@ class ProductsController < ApplicationController
 	end
 
 	private
+	
 	def get_user
 		flash[:notice] = "no user!"
 	end
 
 	def product_permit
 		#params.permit([:name,:description,:image_url,:price])
-		params.require(:product).permit([:name,:description,:image_url,:price,:subcategory_id])
+		params.require(:product).permit([:name,:description,:price,:subcategory_id])
 	end
 
 	def get_product
@@ -96,5 +107,27 @@ class ProductsController < ApplicationController
 			return
 		end
 	end
+
+	def save_file(file)
+		# 設定檔案位置
+		# 建立新檔案位置
+		# 把檔案寫入新的檔案位置
+		# 回傳檔案位置
+		new_dir_url = Rails.root.join('public','uploads/product_images')
+
+		FileUtils.mkdir_p(new_dir_url) unless File.directory?(new_dir_url)
+
+		new_file_url = new_dir_url + file.original_filename
+
+		File.open(new_file_url,'w+b') do |new_file|
+			new_file.write(file.read)
+		end
+
+		return '/uploads/product_images/' + file.original_filename
+	end
+
+
+
+
 
 end

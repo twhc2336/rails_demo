@@ -9,8 +9,9 @@
 	<%= p.text_field :description,class: "form-control" %>
 </div>
 <div class="form-group">
-	<%= p.label :image,"圖片位置" %>
-	<%= p.file_field :image %>
+	<%= p.label :image,"圖片" %><br/>
+	<%= image_tag @product.image_url, size: "300x200", id: "image_preview", original_image: @product.image_url%>
+	<%= p.file_field :image, accept: "image/gif, image/jpg, image/jpeg, image/png" %>
 </div>
 <div class="form-group">
 	<%= p.label :price,"價格" %>
@@ -26,3 +27,24 @@
 <% end %>
 <br/>
 <%#= params %>
+<script type="text/javascript">
+	$(function(){
+		$("#product_image").change(function(){
+			readURL(this,"image_preview")
+		});
+
+		function readURL(input, image_tag_id){
+			if(input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function(){
+					$("#"+image_tag_id).attr("src", this.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}else{
+				var original_url = $("#"+image_tag_id).attr("original_image");
+				$("#"+image_tag_id).attr("src", original_url)
+			}
+		}
+	});
+
+</script>

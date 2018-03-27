@@ -65,9 +65,9 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-		image = params[:product][:image]
-		if image
-			image_url = save_file(image)
+		image_file = params[:product][:image]
+		if image_file
+			image_url = save_file(image_file)
 			@product.update(product_permit.merge({image_url: image_url}))
 		else
 			@product.update(product_permit)		
@@ -113,12 +113,15 @@ class ProductsController < ApplicationController
 		# 建立新檔案位置
 		# 把檔案寫入新的檔案位置
 		# 回傳檔案位置
-		new_dir_url = Rails.root.join('public','uploads/product_images')
+		new_dir_url = Rails.root.join('public','uploads','product_images')
 
 		FileUtils.mkdir_p(new_dir_url) unless File.directory?(new_dir_url)
 
 		new_file_url = new_dir_url + file.original_filename
-
+		#w+:
+		# Read-write mode. Overwrites the existing file if the file exists. 
+		# If the file does not exist, creates a new file for reading and writing.
+		#b:用二進位處理
 		File.open(new_file_url,'w+b') do |new_file|
 			new_file.write(file.read)
 		end

@@ -17,7 +17,8 @@
 			</ul>
 		</div>
 		<div class="col-xs-9">
-			<div class="">
+
+			<div class="row">
 				<div class="jumbotron">
 				  <h1><%= @ad[:title] %></h1>
 				  <%#= render partial: "products/images" %>
@@ -26,15 +27,17 @@
 				  <%= link_to @ad[:action_title], products_path, class: "btn btn-primary btn-lg" %>
 				</div>
 			</div>
+
 			<div class="row">
 				<% @products.each_with_index do |p,index| %>
-					<div class="col-xs-3">
+					<div class="col-sm-6 col-md-4">
 						<%#= render partial: "products/card/small", locals: {product: product} %>
 						<%#= render 'products/card/small', product: product, page: @page %>
 						<%= render 'products/card/small', product: p %>
 					</div>
 				<% end %>
 			</div>
+
 			<div class="row">
 				<nav aria-label="Page navigation">
 				  <ul class="pagination">

@@ -5,28 +5,24 @@ class ProductsController < ApplicationController
 	#skip_after_action :get_user,except: [:new]
 	before_action :redirect_to_root_if_not_log_in, except: [:show, :index]
 	before_action :get_product, only: [:show,:edit,:update,:destroy]
+	before_action :create_ad
 
 	LIMIT_PRODUCTS_NUMBER = 12
 	#PRODUCTS_COUNT = Product.count
 	def index
 		@categories = Category.all
 
-		@ad = {
-			title: "大型廣告",
-			description: "廣告描述",
-			action_title: "閱讀更多",
-		}
-
 		@page = params[:page]? params[:page].to_i: 1
 
-		@products = Product.all
+		@products = Product.all || []
 
 		@first_page = 1
+
 		@last_page = (@products.count.to_f / LIMIT_PRODUCTS_NUMBER).ceil
 
 		#效能問題
 		#@products = Product.all.[(@page - 1) * LIMIT_PRODUCTS_NUMBER,LIMIT_PRODUCTS_NUMBER]
-		@products = Product.all.offset((@page - 1) * LIMIT_PRODUCTS_NUMBER).limit(LIMIT_PRODUCTS_NUMBER)
+		@products = @products.offset((@page - 1) * LIMIT_PRODUCTS_NUMBER).limit(LIMIT_PRODUCTS_NUMBER) if @products.present?
 	end
 
 	def new
@@ -129,8 +125,13 @@ class ProductsController < ApplicationController
 		return '/uploads/product_images/' + file.original_filename
 	end
 
-
-
+	def create_ad
+		@ad = {
+			title: "大型廣告",
+			description: "廣告描述",
+			action_title: "閱讀更多",
+		}
+	end
 
 
 end

@@ -29,7 +29,7 @@
 	</div>
 	<div class="form-group">
 	<%= p.label :image, "圖片" %><br/>
-	<%= image_tag (@product.image_url || "index-owl.jpg"), size: "300x200", id: "image_preview"%><br>
+	<%= image_tag (@product.image_url || "http://via.placeholder.com/350x150"), size: "242x200", id: "image_preview"%><br>
 	<%= p.file_field :image %>
 	</div>
 	<div class="form-group">

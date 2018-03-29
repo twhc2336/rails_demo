@@ -10,7 +10,7 @@
 </div>
 <div class="form-group">
 	<%= p.label :image,"圖片" %><br/>
-	<%= image_tag @product.image_url, size: "300x200", id: "image_preview", original_image: @product.image_url%>
+	<%= image_tag @product.image_url || "http://via.placeholder.com/350x150", size: "242x200", id: "image_preview", original_image: @product.image_url%>
 	<%= p.file_field :image, accept: "image/gif, image/jpg, image/jpeg, image/png" %>
 </div>
 <div class="form-group">

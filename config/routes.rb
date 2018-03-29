@@ -2,6 +2,23 @@ Rails.application.routes.draw do
   resources :events
   resources :people
   resources :products
+
+  resources :categories, param: :category_id, only: [] do
+    collection do
+    end
+
+    member do
+      get :products
+
+      resources :subcategories, param: :subcategory_id, only: [:index] do
+        member do
+          get :products
+        end
+      end
+
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "welcome/say" => "welcome#say"
   get "welcome" => "welcome#index"
